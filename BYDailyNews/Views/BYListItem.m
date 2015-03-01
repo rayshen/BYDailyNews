@@ -29,13 +29,10 @@
    forControlEvents:1<<6];
     
     self.gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pangestureOperation:)];
-    
-    if (!self.longGesture) {
-        self.longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
-        self.longGesture.minimumPressDuration = 1;
-        self.longGesture.allowableMovement = 20;
-        [self addGestureRecognizer:self.longGesture];
-    }
+    self.longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
+    self.longGesture.minimumPressDuration = 1;
+    self.longGesture.allowableMovement = 20;
+    [self addGestureRecognizer:self.longGesture];
     
     if (![itemName isEqualToString:@"推荐"]) {
         if (!self.deleteBtn) {
@@ -77,14 +74,15 @@
 -(void)sortButtonClick{
     if (self.location == top){
         self.deleteBtn.hidden = !self.deleteBtn.hidden;
-        if (self.hiddenBtn.hidden) {
-            [self addGestureRecognizer:self.gesture];
-        }
     }
+    self.hiddenBtn.hidden = !self.hiddenBtn.hidden;
     if (self.gestureRecognizers) {
         [self removeGestureRecognizer:self.gesture];
     }
-    self.hiddenBtn.hidden = !self.hiddenBtn.hidden;
+    if (self.hiddenBtn.hidden && self.location == top) {
+        [self addGestureRecognizer:self.gesture];
+    }
+    
 }
 
 -(void)operationWithHidBtn{
