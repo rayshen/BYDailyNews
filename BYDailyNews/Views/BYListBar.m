@@ -40,14 +40,13 @@
         self.btnBackView.layer.cornerRadius = 5;
         [self addSubview:self.btnBackView];
         
-        for (int i =0; i<visibleItemList.count; i++) {
-            [self makeItemWithTitle:visibleItemList[i]];
-        }
-        
         self.maxWidth = 20;
         self.backgroundColor = RGBColor(238.0, 238.0, 238.0);
         self.contentInset = UIEdgeInsetsMake(0, 0, 0, 50);
         self.showsHorizontalScrollIndicator = NO;
+        for (int i =0; i<visibleItemList.count; i++) {
+            [self makeItemWithTitle:visibleItemList[i]];
+        }
         self.contentSize = CGSizeMake(self.maxWidth, self.frame.size.height);
     }
 }
