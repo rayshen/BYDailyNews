@@ -1,5 +1,5 @@
 //
-//  BYSelectNewBar.h
+//  SelectionButton.h
 //  BYDailyNews
 //
 //  Created by bassamyan on 15/1/18.
@@ -7,5 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface BYSelectNewBar : UIView
+
+@interface BYArrow : UIButton
+
+@property (nonatomic,copy) void(^arrowBtnClick)();
+
 @end
