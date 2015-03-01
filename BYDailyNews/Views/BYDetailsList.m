@@ -43,11 +43,9 @@
     NSInteger count1 = listTop.count;
     for (int i =0; i <count1; i++) {
         BYListItem *item = [[BYListItem alloc] initWithFrame:CGRectMake(padding+(padding+kItemW)*(i% itemPerLine), padding+(kItemH + padding)*(i/itemPerLine), kItemW, kItemH)];
-        __weak typeof(item) unItem = item;
         item.longPressBlock = ^(){
             if (unself.longPressedBlock) {
                 unself.longPressedBlock();
-                [unItem addGestureRecognizer:unItem.gesture];
             }
         };
         item.operationBlock = ^(animateType type, NSString *itemName, int index){
@@ -94,7 +92,7 @@
 }
 
 -(void)itemRespondFromListBarClickWithItemName:(NSString *)itemName{
-    for (int i = 0 ; i<[self.listAll[0] count]; i++) {
+    for (int i = 0 ; i<self.allItems.count; i++) {
         BYListItem *item = (BYListItem *)self.allItems[i];
         if ([itemName isEqualToString:item.itemName]) {
             [self.itemSelect setTitleColor:RGBColor(111.0, 111.0, 111.0) forState:0];

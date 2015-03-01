@@ -68,6 +68,9 @@
         if (self.longPressBlock) {
             self.longPressBlock();
         }
+        if (self.location == top) {
+            [self addGestureRecognizer:self.gesture];
+        }
     }
 }
 
