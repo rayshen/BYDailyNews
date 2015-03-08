@@ -33,25 +33,29 @@
     label.text = @"我的频道";
     [self addSubview:label];
     
-    self.hitText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame)+10,10, 100, 11)];
-    self.hitText.font = [UIFont systemFontOfSize:11];
-    self.hitText.text = @"拖拽可以排序";
-    self.hitText.textColor = RGBColor(170.0, 170.0, 170.0);
-    self.hitText.hidden = YES;
-    [self addSubview:self.hitText];
+    if (!self.hitText) {
+        self.hitText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame)+10,10, 100, 11)];
+        self.hitText.font = [UIFont systemFontOfSize:11];
+        self.hitText.text = @"拖拽可以排序";
+        self.hitText.textColor = RGBColor(170.0, 170.0, 170.0);
+        self.hitText.hidden = YES;
+        [self addSubview:self.hitText];
+    }
     
-    self.sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenW-100, 5, 50, 20)];
-    [self.sortBtn setTitle:@"排序" forState:0];
-    [self.sortBtn setTitleColor:[UIColor redColor] forState:0];
-    self.sortBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    self.sortBtn.layer.cornerRadius = 5;
-    self.sortBtn.layer.borderWidth = 0.5;
-    [self.sortBtn.layer setMasksToBounds:YES];
-    self.sortBtn.layer.borderColor = [[UIColor redColor] CGColor];
-    [self.sortBtn addTarget:self
-               action:@selector(sortBtnClick:)
-     forControlEvents:1<<6];
-    [self addSubview:self.sortBtn];
+    if (!self.sortBtn) {
+        self.sortBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenW-100, 5, 50, 20)];
+        [self.sortBtn setTitle:@"排序" forState:0];
+        [self.sortBtn setTitleColor:[UIColor redColor] forState:0];
+        self.sortBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        self.sortBtn.layer.cornerRadius = 5;
+        self.sortBtn.layer.borderWidth = 0.5;
+        [self.sortBtn.layer setMasksToBounds:YES];
+        self.sortBtn.layer.borderColor = [[UIColor redColor] CGColor];
+        [self.sortBtn addTarget:self
+                         action:@selector(sortBtnClick:)
+               forControlEvents:1<<6];
+        [self addSubview:self.sortBtn];
+    }
     
 }
 

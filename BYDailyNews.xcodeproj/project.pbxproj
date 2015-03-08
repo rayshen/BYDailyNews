@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		532192CE1A6A9CA800A682A8 /* BYDailyNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 532192CD1A6A9CA800A682A8 /* BYDailyNewsTests.m */; };
 		532192DC1A6A9FD400A682A8 /* BYMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532192DB1A6A9FD400A682A8 /* BYMainController.m */; };
+		532951671AAC763E0006C47C /* BYScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 532951661AAC763E0006C47C /* BYScroller.m */; };
 		5353B2691A6FEDA500163594 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5353B24C1A6FEDA500163594 /* Arrow.png */; };
 		5353B26A1A6FEDA500163594 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5353B24D1A6FEDA500163594 /* delete.png */; };
 		5353B26C1A6FEDA500163594 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5353B24F1A6FEDA500163594 /* nav_bg.png */; };
@@ -42,6 +43,8 @@
 		532192CD1A6A9CA800A682A8 /* BYDailyNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYDailyNewsTests.m; sourceTree = "<group>"; };
 		532192DA1A6A9FD400A682A8 /* BYMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYMainController.h; sourceTree = "<group>"; };
 		532192DB1A6A9FD400A682A8 /* BYMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYMainController.m; sourceTree = "<group>"; };
+		532951651AAC763E0006C47C /* BYScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYScroller.h; sourceTree = "<group>"; };
+		532951661AAC763E0006C47C /* BYScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYScroller.m; sourceTree = "<group>"; };
 		5353B24C1A6FEDA500163594 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		5353B24D1A6FEDA500163594 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		5353B24F1A6FEDA500163594 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				5353B25A1A6FEDA500163594 /* BYDetailsList.m */,
 				5353B25B1A6FEDA500163594 /* BYListItem.h */,
 				5353B25C1A6FEDA500163594 /* BYListItem.m */,
+				532951651AAC763E0006C47C /* BYScroller.h */,
+				532951661AAC763E0006C47C /* BYScroller.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5353B2731A6FEDA500163594 /* BYListItem.m in Sources */,
+				532951671AAC763E0006C47C /* BYScroller.m in Sources */,
 				5353B26F1A6FEDA500163594 /* main.m in Sources */,
 				5353B2721A6FEDA500163594 /* BYDetailsList.m in Sources */,
 				532192DC1A6A9FD400A682A8 /* BYMainController.m in Sources */,

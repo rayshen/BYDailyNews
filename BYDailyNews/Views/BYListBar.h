@@ -11,10 +11,11 @@
 @interface BYListBar : UIScrollView
 
 @property (nonatomic,copy) void(^arrowChange)();
-@property (nonatomic,copy) void(^listBarItemClickBlock)(NSString *itemName);
+@property (nonatomic,copy) void(^listBarItemClickBlock)(NSString *itemName , NSInteger itemIndex);
 
 @property (nonatomic,strong) NSMutableArray *visibleItemList;
 
 -(void)operationFromBlock:(animateType)type itemName:(NSString *)itemName index:(int)index;
+-(void)itemClickByScrollerWithIndex:(NSInteger)index;
 
 @end

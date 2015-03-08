@@ -73,6 +73,7 @@
     self.contentSize = CGSizeMake(self.maxWidth, self.frame.size.height);
 }
 
+
 -(void)itemClick:(UIButton *)sender{
     if (self.btnSelect != sender) {
         [self.btnSelect setTitleColor:RGBColor(111.0, 111.0, 111.0) forState:0];
@@ -80,7 +81,7 @@
         self.btnSelect = sender;
         
         if (self.listBarItemClickBlock) {
-            self.listBarItemClickBlock(sender.titleLabel.text);
+            self.listBarItemClickBlock(sender.titleLabel.text,[self findIndexOfListsWithTitle:sender.titleLabel.text]);
         }
     }
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -99,6 +100,11 @@
             self.contentOffset = changePoint;
         }];
     }];
+}
+
+-(void)itemClickByScrollerWithIndex:(NSInteger)index{
+    UIButton *item = (UIButton *)self.btnLists[index];
+    [self itemClick:item];
 }
 
 -(void)operationFromBlock:(animateType)type itemName:(NSString *)itemName index:(int)index{

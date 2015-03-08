@@ -11,12 +11,13 @@
 #import "BYArrow.h"
 #import "BYDetailsList.h"
 #import "BYDeleteBar.h"
+#import "BYScroller.h"
 
 #define kListBarH 30
 #define kArrowW 40
 #define kAnimationTime 0.8
 
-@interface BYMainController ()
+@interface BYMainController () <UIScrollViewDelegate>
 
 @property (nonatomic,strong) BYListBar *listBar;
 
@@ -25,6 +26,8 @@
 @property (nonatomic,strong) BYDetailsList *detailsList;
 
 @property (nonatomic,strong) BYArrow *arrow;
+
+@property (nonatomic,strong) UIScrollView *mainScroller;
 
 @end
 
@@ -74,8 +77,12 @@
                 unself.arrow.arrowBtnClick();
             }
         };
-        self.listBar.listBarItemClickBlock = ^(NSString *itemName){
+        self.listBar.listBarItemClickBlock = ^(NSString *itemName , NSInteger itemIndex){
             [unself.detailsList itemRespondFromListBarClickWithItemName:itemName];
+            //添加scrollview
+            
+            //移动到该位置
+            unself.mainScroller.contentOffset =  CGPointMake(itemIndex * unself.mainScroller.frame.size.width, 0);
         };
         [self.view addSubview:self.listBar];
     }
@@ -98,5 +105,31 @@
         };
         [self.view addSubview:self.arrow];
     }
+    
+    if (!self.mainScroller) {
+        self.mainScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kListBarH, kScreenW , kScreenH-kListBarH-64)];
+        self.mainScroller.backgroundColor = [UIColor yellowColor];
+        self.mainScroller.bounces = NO;
+        self.mainScroller.pagingEnabled = YES;
+        self.mainScroller.showsHorizontalScrollIndicator = NO;
+        self.mainScroller.showsVerticalScrollIndicator = NO;
+        self.mainScroller.delegate = self;
+        self.mainScroller.contentSize = CGSizeMake(kScreenW*10,self.mainScroller.frame.size.height);
+        [self.view addSubview:self.mainScroller];
+        
+#warning 预加载、清除防止内存过大等操作暂时不做了~~
+        [self addScrollViewWithItemName:@"推荐" index:0];
+        [self addScrollViewWithItemName:@"测试" index:1];
+    }
+}
+
+-(void)addScrollViewWithItemName:(NSString *)itemName index:(NSInteger)index{
+    UIScrollView *scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(index * self.mainScroller.frame.size.width, 0, self.mainScroller.frame.size.width, self.mainScroller.frame.size.height)];
+    scroller.backgroundColor = RGBColor(arc4random()%255, arc4random()%255, arc4random()%255);
+    [self.mainScroller addSubview:scroller];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [self.listBar itemClickByScrollerWithIndex:scrollView.contentOffset.x / self.mainScroller.frame.size.width];
 }
 @end
