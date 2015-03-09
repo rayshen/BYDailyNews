@@ -115,7 +115,7 @@
         self.mainScroller.showsVerticalScrollIndicator = NO;
         self.mainScroller.delegate = self;
         self.mainScroller.contentSize = CGSizeMake(kScreenW*10,self.mainScroller.frame.size.height);
-        [self.view addSubview:self.mainScroller];
+        [self.view insertSubview:self.mainScroller atIndex:0];
         
 #warning 预加载、清除防止内存过大等操作暂时不做了~~
         [self addScrollViewWithItemName:@"推荐" index:0];
